@@ -23,6 +23,16 @@ function App() {
           />
         );
       })}
+      <Card
+        id={todos.id}
+        key={todos.id}
+        title={todos.title}
+        description={todos.description}
+        checked={todos.checked}
+        toggleDone={(event) => {
+          setTest(event.target.checked);
+        }}
+      />
     </>
   );
 }

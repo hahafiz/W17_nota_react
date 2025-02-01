@@ -9,8 +9,32 @@ const NewTodo = (props) => {
    * 5. extract input daripada form
    * 6. panggil API
    */
+  const handleSubmit = (event) => {
+    event.preventDefault();
+
+    // extract information
+    const formContent = event.target.elements;
+    const title = formContent.title.value;
+    const description = formContent.description.value;
+
+    // state management, or use API here
+    console.log({
+      title,
+      description,
+    });
+
+    // pass information to parent
+    props.addNewTodo({
+      title,
+      description,
+    });
+
+    event.target.reset();
+  };
+
   return (
     <form
+      onSubmit={handleSubmit}
       style={{
         display: "flex",
         flexDirection: "column",
@@ -67,6 +91,8 @@ const NewTodo = (props) => {
   );
 };
 
-NewTodo.propTypes = {};
+NewTodo.propTypes = {
+  addNewTodo: PropTypes.func,
+};
 
 export default NewTodo;

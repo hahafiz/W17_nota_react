@@ -6,9 +6,26 @@ function App() {
   const [todos, setTodos] = useState([]);
   const [test, setTest] = useState(false);
 
+  const handleAddNewTodo = ({ title, description }) => {
+    const newTodoItem = {
+      id: Math.random().toString(),
+      title,
+      description,
+      checked: false,
+    };
+
+    setTodos((prevTodo) => {
+      // copy the prev list, add newTodoItem at the end of the array
+      return [...prevTodo, newTodoItem];
+    });
+  };
+
   return (
     <>
-      <NewTodo />
+      {/* debugging purpose only: to view the data*/}
+      {/* <pre>{JSON.stringify(todos, null, 2)}</pre> */}
+
+      <NewTodo addNewTodo={handleAddNewTodo} />
       {todos.map((todo) => {
         return (
           <Card
@@ -23,16 +40,6 @@ function App() {
           />
         );
       })}
-      <Card
-        id={todos.id}
-        key={todos.id}
-        title={todos.title}
-        description={todos.description}
-        checked={todos.checked}
-        toggleDone={(event) => {
-          setTest(event.target.checked);
-        }}
-      />
     </>
   );
 }

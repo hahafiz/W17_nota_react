@@ -1,3 +1,4 @@
+import { useState } from "react";
 import PropTypes from "prop-types";
 
 const NewTodo = (props) => {
@@ -9,6 +10,8 @@ const NewTodo = (props) => {
    * 5. extract input daripada form
    * 6. panggil API
    */
+  const [title, setTitle] = useState("");
+
   const handleSubmit = (event) => {
     event.preventDefault();
 
@@ -43,7 +46,9 @@ const NewTodo = (props) => {
         padding: "1rem",
         borderRadius: "0.5rem",
       }}
+      disabled={!title.trim()}
     >
+      {/* TODO: ALIGN THE fieldset with button */}
       <fieldset
         style={{
           display: "flex",
@@ -57,11 +62,15 @@ const NewTodo = (props) => {
           type="text"
           id="title"
           name="title"
+          onChange={(event) => {
+            setTitle(event.target.value);
+          }}
           style={{
             padding: "0.5rem 0.75rem",
             borderRadius: "0.25rem",
             outline: "none",
           }}
+          required
         />
       </fieldset>
 
@@ -86,7 +95,9 @@ const NewTodo = (props) => {
         />
       </fieldset>
 
-      <button type="submit">Submit</button>
+      <button type="submit" className="submit" disabled={!title.trim()}>
+        Submit
+      </button>
     </form>
   );
 };

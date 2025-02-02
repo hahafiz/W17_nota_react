@@ -48,7 +48,6 @@ const NewTodo = (props) => {
       }}
       disabled={!title.trim()}
     >
-      {/* TODO: ALIGN THE fieldset with button */}
       <fieldset
         style={{
           display: "flex",
@@ -95,7 +94,12 @@ const NewTodo = (props) => {
         />
       </fieldset>
 
-      <button type="submit" className="submit" disabled={!title.trim()}>
+      <button
+        style={{ marginLeft: "1rem" }}
+        type="submit"
+        className="submit"
+        disabled={!title.trim()}
+      >
         Submit
       </button>
     </form>

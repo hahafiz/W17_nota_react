@@ -54,7 +54,7 @@ Card.propTypes = {
   checked: PropTypes.bool,
   title: PropTypes.string,
   description: PropTypes.string,
-  toggleDone: PropTypes.bool,
+  toggleDone: PropTypes.func,
 };
 
 export default Card;

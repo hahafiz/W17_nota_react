@@ -4,7 +4,6 @@ import NewTodo from "./components/NewTodo";
 
 function App() {
   const [todos, setTodos] = useState([]);
-  const [test, setTest] = useState(false);
 
   const generateRandomHex = () => {
     return Math.floor(Math.random() * 16777215).toString(16);
@@ -22,6 +21,8 @@ function App() {
       // copy the prev list, add newTodoItem at the end of the array
       return [...prevTodo, newTodoItem];
     });
+
+    // TODO: call API untuk create TODO
   };
 
   const handleChecked = (event) => {
@@ -34,6 +35,7 @@ function App() {
     setTodos((prevTodo) => {
       const updatedTodos = prevTodo.map((todo) => {
         // return early if id not match - we don't want to change anything to it
+        // return early pattern
         if (todo.id !== targetId) {
           return todo;
         }
@@ -50,6 +52,8 @@ function App() {
 
       return updatedTodos;
     });
+
+    // TODO: call API untuk create TODO
   };
 
   return (

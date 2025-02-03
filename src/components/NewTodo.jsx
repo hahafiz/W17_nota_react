@@ -45,6 +45,7 @@ const NewTodo = (props) => {
         gap: "0.5rem",
         padding: "1rem",
         borderRadius: "0.5rem",
+        backgroundColor: "#444444",
       }}
       disabled={!title.trim()}
     >
@@ -68,6 +69,9 @@ const NewTodo = (props) => {
             padding: "0.5rem 0.75rem",
             borderRadius: "0.25rem",
             outline: "none",
+            border: "none",
+            backgroundColor: "#ffffff",
+            color: "#000000",
           }}
           required
         />
@@ -90,16 +94,14 @@ const NewTodo = (props) => {
             padding: "0.5rem 0.75rem",
             borderRadius: "0.25rem",
             outline: "none",
+            border: "none",
+            backgroundColor: "#ffffff",
+            color: "#000000",
           }}
         />
       </fieldset>
 
-      <button
-        style={{ marginLeft: "1rem" }}
-        type="submit"
-        className="submit"
-        disabled={!title.trim()}
-      >
+      <button type="submit" className="submit" disabled={!title.trim()}>
         Submit
       </button>
     </form>

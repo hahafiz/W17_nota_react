@@ -16,3 +16,5 @@ export const register = async ({ username, email, password }) => {
     console.log(error);
   }
 };
+
+// try to finish week 18 today

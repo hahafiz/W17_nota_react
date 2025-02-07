@@ -18,3 +18,4 @@ export const register = async ({ username, email, password }) => {
 };
 
 // try to finish week 18 today
+// progress: learning backend

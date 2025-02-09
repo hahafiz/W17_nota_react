@@ -1,18 +1,25 @@
-import { useState } from "react";
+import { registerUser } from "../api/auth";
 
 const RegisterUser = () => {
-  const [title, setTitle] = useState("");
-
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // // extract information
+
     const formContent = event.target.elements;
     const username = formContent.username.value;
     const email = formContent.email.value;
     const password = formContent.password.value;
 
     // Call API untuk register
+    const data = await registerUser({ username, email, password });
 
+    const token = data.token;
+    if (token) {
+      window.localStorage.setItem("token", token);
+    }
+
+    // cookie
+
+    console.log(data);
     event.target.reset();
   };
 

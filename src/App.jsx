@@ -2,11 +2,22 @@ import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import NewTodo from "./components/NewTodo";
 import RegisterUser from "./components/RegisterUser";
+import { getTodoList } from "./api/todo";
 
 function App() {
   const [todos, setTodos] = useState([]);
+  const [todoList, setTodoList] = useState();
 
-  useEffect(() => {}, [todos]);
+  const token = window.localStorage.getItem("token");
+
+  const getTodoListFromApi = async () => {
+    const data = await getTodoList();
+    setTodoList(data);
+  };
+
+  useEffect(() => {
+    getTodoListFromApi();
+  }, [todos]);
 
   const generateRandomHex = () => {
     return Math.floor(Math.random() * 16777215).toString(16);
@@ -71,16 +82,17 @@ function App() {
       {/* debugging purpose only: to view the data*/}
       {/* <pre>{JSON.stringify(todos, null, 2)}</pre> */}
 
-      <RegisterUser />
+      <pre>{JSON.stringify(todoList, null, 2)}</pre>
+      {!token && <RegisterUser />}
       <NewTodo addNewTodo={handleAddNewTodo} />
-      {todos.map((todo) => {
+      {todoList?.map((todo) => {
         return (
           <Card
-            id={todo.id}
-            key={todo.id}
+            id={todo._id}
+            key={todo._id}
             title={todo.title}
             description={todo.description}
-            checked={todo.checked}
+            checked={todo.completed}
             toggleDone={handleChecked}
           />
         );

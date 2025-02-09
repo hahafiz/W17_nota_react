@@ -1,17 +1,27 @@
-export const register = async ({ username, email, password }) => {
+export const registerUser = async ({ username, email, password }) => {
   try {
-    // call API secara optimistik (assume takde masalah)
-    const response = await fetch({
-      url: `${import.meta.env.API_URL}/api/auth/register`,
-      method: "POST",
-      body: {
-        username: username,
-        email: email,
-        password: password,
-      },
-    });
+    // CALLING API
+    // console.log(username, email, password);
+    const response = await fetch(
+      `${import.meta.env.VITE_API_URL}/api/auth/register`,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          username: username,
+          email: email,
+          password: password,
+        }),
+      }
+    );
 
-    console.log(response);
+    const data = await response.json();
+
+    console.log("THIS IS RESPONSE", response);
+    console.log(data);
+    return data;
   } catch (error) {
     console.log(error);
   }

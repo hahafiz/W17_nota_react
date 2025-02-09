@@ -1,9 +1,12 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Card from "./components/Card";
 import NewTodo from "./components/NewTodo";
+import RegisterUser from "./components/RegisterUser";
 
 function App() {
   const [todos, setTodos] = useState([]);
+
+  useEffect(() => {}, [todos]);
 
   const generateRandomHex = () => {
     return Math.floor(Math.random() * 16777215).toString(16);
@@ -68,6 +71,7 @@ function App() {
       {/* debugging purpose only: to view the data*/}
       {/* <pre>{JSON.stringify(todos, null, 2)}</pre> */}
 
+      <RegisterUser />
       <NewTodo addNewTodo={handleAddNewTodo} />
       {todos.map((todo) => {
         return (

@@ -10,14 +10,15 @@ function App() {
 
   const token = window.localStorage.getItem("token");
 
-  const getTodoListFromApi = async () => {
-    const data = await getTodoList();
-    setTodoList(data);
-  };
+  // API integration
+  // const getTodoListFromApi = async () => {
+  //   const data = await getTodoList();
+  //   setTodoList(data);
+  // };
 
-  useEffect(() => {
-    getTodoListFromApi();
-  }, [todos]);
+  // useEffect(() => {
+  //   getTodoListFromApi();
+  // }, [todos]);
 
   const generateRandomHex = () => {
     return Math.floor(Math.random() * 16777215).toString(16);
